@@ -58,6 +58,7 @@
     "@dcloudio/uni-quickapp-webview": "^2.0.0-31920210609001",
     "@dcloudio/uni-stat": "^2.0.0-31920210609001",
     "@vue/shared": "^3.0.0",
+    "axios": "^0.21.1",
     "core-js": "^3.6.5",
     "flyio": "^0.6.2",
     "regenerator-runtime": "^0.12.1",

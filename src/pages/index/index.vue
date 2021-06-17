@@ -1,49 +1,138 @@
 <template>
-	<view class="content">
-		<image class="logo" src="/static/logo.png"></image>
-		<view>
-			<text class="title">{{title}}</text>
-		</view>
-	</view>
+  <view class="index">
+    <!-- <view class="status_bar">
+      这里是状态栏
+    </view> -->
+    <!-- 自定义导航栏 -->
+    <view class="nav">
+      <view class="iconfont icon-sousuo"></view>
+      <view class="nav-list">
+        <view
+          class="nav-item"
+          v-for="item in navTitle"
+          :key="item"
+        >{{item}}</view>
+      </view>
+    </view>
+    <!-- 视频区 -->
+    <view class="video-content">
+      <swiper
+        class="swiper"
+        vertical
+      >
+        <swiper-item v-for="(item, index) in videoList" :key="index">
+          <CVideo :needData="item" />
+          <Interactive :needData="item" />
+          <Topic :needData="item" />
+        </swiper-item>
+      </swiper>
+    </view>
+  </view>
 </template>
 
 <script>
-	export default {
-		data() {
-			return {
-				title: 'Hello'
-			}
-		},
-		onLoad() {
-
-		},
-		methods: {
-
-		}
-	}
+import CVideo from './components/cVideo.vue'
+import Interactive from './components/interactive.vue'
+import Topic from './components/topic.vue'
+export default {
+  data () {
+    return {
+      navTitle: ['推荐', '同城'],
+      swiperH: '',
+      videoList: null
+    }
+  },
+  components: {
+    CVideo,
+    Interactive,
+    Topic
+  },
+  onLoad () {
+    this.getDataList()
+  },
+  mounted () {
+    // const navDom = uni.createSelectorQuery().select('.nav')
+    // const statusBarDom = uni.createSelectorQuery().select('.status_bar')
+    // const { windowHeight } = uni.getSystemInfoSync()
+    // new Promise(resolve => {
+    //   navDom.boundingClientRect().exec(navRes => {
+    //     statusBarDom.boundingClientRect().exec(statusRes => {
+    //       resolve(navRes[0].height + statusRes[0].height)
+    //     })
+    //   })
+    // }).then((res) => {
+    //   this.swiperH = windowHeight - res + 'px'
+    // })
+  },
+  methods: {
+    getDataList () {
+      uni.showLoading({
+        title: '',
+        mask: true
+      })
+      // this.$axios({
+      //   methods: 'get',
+      //   url: '/user/user.json'
+      // }).then(res => {
+      //   console.log(res)
+      // }).catch(err => {
+      //   console.log(err)
+      // })
+      uni.request({
+      	url: 'http://172.20.10.2:1012/user/user.json',
+      	method: 'get',
+      	timeout: 10000,
+      	success: res => {
+      		uni.hideLoading()
+          const { data } = res
+      		this.videoList = data
+      	}
+      })
+    }
+  }
+}
 </script>
 
-<style>
-	.content {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-	}
-
-	.logo {
-		height: 200rpx;
-		width: 200rpx;
-		margin: 200rpx auto 50rpx auto;
-	}
-
-	.text-area {
-		display: flex;
-		justify-content: center;
-	}
-
-	.title {
-		font-size: 36rpx;
-		color: #8f8f94;
-	}
+<style scoped>
+.index {
+  height: 100%;
+}
+/* .status_bar {
+  width: 100%;
+  height: var(--status-bar-height);
+} */
+.nav {
+  position: fixed;
+  top: var(--status-bar-height);
+  z-index: 99;
+  color: #999;
+  font-size: 30rpx;
+  width: 100%;
+}
+.nav .nav-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80rpx;
+  font-weight: 500;
+}
+.nav-list .nav-item {
+  padding: 10rpx 30rpx;
+}
+.nav .icon-sousuo {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  color: #fff;
+  font-size: 40rpx;
+  padding: 0 30rpx;
+}
+.video-content {
+  width: 100%;
+  height: 100%;
+}
+.video-content .swiper {
+  height: 100%;
+}
 </style>

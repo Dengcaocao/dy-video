@@ -13,6 +13,21 @@
 			"autoclose": true,
 			"delay": 0
 		},
+	"h5": {
+		"devServer" : {
+			"https" : false,
+			"proxy": {  
+				"/api": {  
+					"target": "http://172.20.10.2:1012",
+					"changeOrigin": true,   
+					"secure": false,
+					"pathRewrite": {
+						"^/api": ""  
+					}  
+				}  
+			}  
+		}
+	},
 		"modules": { /* 模块配置 */
 
 		},

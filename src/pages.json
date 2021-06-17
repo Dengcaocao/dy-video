@@ -3,13 +3,65 @@
 		{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "uni-app"
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/friend/friend",
+			"style": {
+				
+			}
+		},
+		{
+			"path": "pages/add/add",
+			"style": {
+				
+			}
+		},
+		{
+			"path": "pages/msg/msg",
+			"style": {
+				
+			}
+		},
+		{
+			"path": "pages/profile/profile",
+			"style": {
+				
 			}
 		}
 	],
+	"tabBar": {
+		"color": "#999999",
+		"selectedColor": "#ffffff",
+		"backgroundColor": "#000000",
+		"list": [
+			{
+				"pagePath": "pages/index/index",
+				"text": "首页"
+			},
+			{
+				"pagePath": "pages/friend/friend",
+				"text": "朋友"
+			},
+			{
+				"pagePath": "pages/add/add",
+				"iconPath": "./static/tabBar/add.png",
+				"selectedIconPath": "./static/tabBar/add.png"
+			},
+			{
+				"pagePath": "pages/msg/msg",
+				"text": "消息"
+			},
+			{
+				"pagePath": "pages/profile/profile",
+				"text": "我的"
+			}
+		]
+	},
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "uni-app",
+		"navigationBarTitleText": "dy-video",
 		"navigationBarBackgroundColor": "#F8F8F8",
 		"backgroundColor": "#F8F8F8"
 	}
