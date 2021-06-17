@@ -49,7 +49,7 @@ export default {
     return {
       navTitle: ['推荐', '同城'],
       swiperH: '',
-      videoList: null
+      videoList: null,
       lastCurrent: 0
     }
   },
@@ -90,15 +90,16 @@ export default {
       //   console.log(err)
       // })
       uni.request({
-      	url: 'http://172.20.10.2:1012/user/user.json',
-      	method: 'get',
-      	timeout: 10000,
-      	success: res => {
-      		uni.hideLoading()
+        url: 'http://172.20.10.2:1012/user/user.json',
+        method: 'get',
+        timeout: 10000,
+        success: res => {
+          uni.hideLoading()
           const { data } = res
-      		this.videoList = data
-      	}
+          this.videoList = data
+        }
       })
+    },
     change (e) {
       const { current } = e.detail
       /**
