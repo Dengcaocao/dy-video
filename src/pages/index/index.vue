@@ -19,6 +19,8 @@
       <swiper
         class="swiper"
         vertical
+        :current="lastCurrent"
+        @change="change"
       >
         <swiper-item v-for="(item, index) in videoList" :key="index">
           <CVideo :needData="item" />
@@ -40,6 +42,7 @@ export default {
       navTitle: ['推荐', '同城'],
       swiperH: '',
       videoList: null
+      lastCurrent: 0
     }
   },
   components: {
@@ -88,6 +91,18 @@ export default {
       		this.videoList = data
       	}
       })
+    change (e) {
+      const { current } = e.detail
+      /**
+       * 当前视频播放
+       * 上一个视频暂停
+       * 调用子组件方法
+       */
+      this.$refs.video[current].play()
+      this.$refs.video[this.lastCurrent].stop()
+      this.$refs.video[this.lastCurrent].seek()
+      this.lastCurrent = current
+    },
     }
   }
 }
