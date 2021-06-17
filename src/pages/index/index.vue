@@ -22,9 +22,17 @@
         :current="lastCurrent"
         @change="change"
       >
-        <swiper-item v-for="(item, index) in videoList" :key="index">
-          <CVideo :needData="item" />
-          <Interactive :needData="item" />
+        <swiper-item
+          v-for="(item, index) in videoList"
+          :key="index"
+        >
+          <CVideo
+            :needData="item"
+            :index="index"
+            @setIsLike="setIsLike"
+            ref="video"
+          />
+          <Interactive :needData="item" ref="interactive" />
           <Topic :needData="item" />
         </swiper-item>
       </swiper>
@@ -103,6 +111,8 @@ export default {
       this.$refs.video[this.lastCurrent].seek()
       this.lastCurrent = current
     },
+    setIsLike (val) {
+      this.$refs.interactive[this.lastCurrent].isLike = val
     }
   }
 }
