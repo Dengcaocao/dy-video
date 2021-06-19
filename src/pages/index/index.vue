@@ -34,6 +34,8 @@
         </swiper>
       </view>
     </view>
+    <!-- 同城 -->
+    <CityWide v-show="indexPage === '同城'" />
   </view>
 </template>
 
@@ -42,12 +44,13 @@ import Nav from './components/nav.vue'
 import CVideo from './components/cVideo.vue'
 import Interactive from './components/interactive.vue'
 import Topic from './components/topic.vue'
+import CityWide from './city-wide.vue'
 export default {
   data () {
     return {
-      swiperH: '',
       videoList: null,
-      lastCurrent: 0
+      lastCurrent: 0,
+      currentPage: ''
     }
   },
   computed: {
@@ -59,7 +62,8 @@ export default {
     Nav,
     CVideo,
     Interactive,
-    Topic
+    Topic,
+    CityWide
   },
   onLoad () {
     this.getDataList()
