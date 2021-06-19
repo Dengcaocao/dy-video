@@ -40,6 +40,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import Nav from './components/nav.vue'
 import CVideo from './components/cVideo.vue'
 import Interactive from './components/interactive.vue'
@@ -72,7 +73,7 @@ export default {
     this.$refs.nav.initIndexPage()
   },
   mounted () {
-    // const navDom = uni.createSelectorQuery().select('.nav')
+    // const navDom = uni.createSelectorQuery().select('.nav')swiperH
     // const statusBarDom = uni.createSelectorQuery().select('.status_bar')
     // const { windowHeight } = uni.getSystemInfoSync()
     // new Promise(resolve => {
