@@ -36,8 +36,7 @@ export default {
       clickNum: 0,
       startAt: 0,
       endAt: 0,
-      dbTimer: null,
-      isLike: false
+      dbTimer: null
     }
   },
   onReady () {
@@ -50,14 +49,14 @@ export default {
         this.startAt = new Date().getTime()
         this.dbTimer = setTimeout(() => {
           this.playOrPause()
+          console.log(this.isPlay)
           this.clickNum = 0
         }, 300)
       } else if (this.clickNum === 2) {
         this.endAt = new Date().getTime()
         if (this.endAt - this.startAt < 300) {
           clearTimeout(this.dbTimer)
-          this.isLike = !this.isLike
-          this.$emit('setIsLike', this.isLike)
+          this.$emit('setIsLike', true)
         } else {
           this.playOrPause()
         }

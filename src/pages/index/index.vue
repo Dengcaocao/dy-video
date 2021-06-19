@@ -120,6 +120,8 @@ export default {
       this.$refs.video[current].play()
       this.$refs.video[this.lastCurrent].stop()
       this.$refs.video[this.lastCurrent].seek()
+      this.$refs.video[this.lastCurrent].clickNum = 0
+      this.$refs.video[this.lastCurrent].isPlay = true
       this.lastCurrent = current
     },
     setIsLike (val) {
