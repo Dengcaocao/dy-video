@@ -72,20 +72,6 @@ export default {
   onReady () {
     this.$refs.nav.initIndexPage()
   },
-  mounted () {
-    // const navDom = uni.createSelectorQuery().select('.nav')swiperH
-    // const statusBarDom = uni.createSelectorQuery().select('.status_bar')
-    // const { windowHeight } = uni.getSystemInfoSync()
-    // new Promise(resolve => {
-    //   navDom.boundingClientRect().exec(navRes => {
-    //     statusBarDom.boundingClientRect().exec(statusRes => {
-    //       resolve(navRes[0].height + statusRes[0].height)
-    //     })
-    //   })
-    // }).then((res) => {
-    //   this.swiperH = windowHeight - res + 'px'
-    // })
-  },
   methods: {
     getDataList () {
       uni.showLoading({
@@ -137,10 +123,6 @@ export default {
 .nav {
   height: 100%;
 }
-/* .status_bar {
-  width: 100%;
-  height: var(--status-bar-height);
-} */
 .video-content {
   width: 100%;
   height: 100%;
