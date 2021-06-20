@@ -1,7 +1,7 @@
 <template>
-  <view class="nav">
-    <view class="iconfont icon-sousuo"></view>
+  <view class="nav" :style="{backgroundColor: bg,position: position}">
     <view class="nav-list">
+      <view class="iconfont icon-sousuo"></view>
       <view
         class="nav-item"
         :class="{'active': typeIndex === index}"
@@ -20,11 +20,31 @@ export default {
       navTitle: ['同城', '推荐']
     }
   },
+  props: {
+    bg: {
+      type: String,
+      default: 'transparent'
+    },
+    position: {
+      type: String,
+      default: 'static'
+    }
+  },
   computed: {
     ...mapState([
       'typeIndex',
       'indexPage'
     ])
+  },
+  watch: {
+    /**
+     * 解决获取不到dom高度的问题
+     */
+    indexPage (val) {
+      if (val === '同城') {
+        this.getHeight()
+      }
+    }
   },
   methods: {
     ...mapMutations([
@@ -38,13 +58,19 @@ export default {
     initIndexPage () {
       this.setTypeIndex(this.navTitle.length - 1)
       this.setIndexPage(this.navTitle[this.typeIndex])
+    },
+    getHeight () {
+      const navDom = uni.createSelectorQuery().in(this).select('.nav')
+      navDom.boundingClientRect().exec(navRes => {
+        this.$emit('sendHeight', navRes[0].height)
+      })
     }
   }
 }
 </script>
 <style scoped>
 .nav {
-  position: fixed;
+  /* position: fixed; */
   top: var(--status-bar-height);
   z-index: 99;
   color: #999;
