@@ -49,7 +49,6 @@ export default {
         this.startAt = new Date().getTime()
         this.dbTimer = setTimeout(() => {
           this.playOrPause()
-          console.log(this.isPlay)
           this.clickNum = 0
         }, 300)
       } else if (this.clickNum === 2) {
