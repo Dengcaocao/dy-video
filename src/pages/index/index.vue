@@ -1,12 +1,9 @@
 <template>
   <view class="index">
-    <!-- <view class="status_bar">
-      这里是状态栏
-    </view> -->
     <!-- 推荐 -->
     <view class="nav" v-show="indexPage === '推荐'">
       <!-- 自定义导航栏 -->
-      <Nav ref="nav" />
+      <Nav ref="nav" position="fixed" />
       <!-- 视频区 -->
       <view class="video-content">
         <swiper
