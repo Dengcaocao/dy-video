@@ -52,6 +52,11 @@ export default {
       'setIndexPage'
     ]),
     cutType (index) {
+      if (this.indexPage === '同城' && this.navTitle[index] === '同城') {
+        uni.navigateTo({
+          url: '/pages/positionCity/positionCity'
+        })
+      }
       this.setTypeIndex(index)
       this.setIndexPage(this.navTitle[this.typeIndex])
     },
