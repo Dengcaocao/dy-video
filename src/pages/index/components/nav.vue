@@ -1,5 +1,8 @@
 <template>
-  <view class="nav" :style="{backgroundColor: bg,position: position}">
+  <view
+    class="nav"
+    :style="{backgroundColor: bg,position: position}"
+  >
     <view class="nav-list">
       <view class="iconfont icon-sousuo"></view>
       <view
