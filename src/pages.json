@@ -29,6 +29,26 @@
 			"style": {
 				
 			}
+		},
+		{
+			"path": "pages/positionCity/positionCity",
+			"style": {
+				"h5": {
+					"titleNView": {
+						"backgroundColor": "#ffffff",
+						"titleText": "切换城市",
+						"titleColor": "#000000",
+						"titleSize": "14px",
+						"buttons": [
+							{
+								"type": "back",
+								"float": "left",
+								"fontSrc": ""
+							}
+						]
+					}
+				}
+			}
 		}
 	],
 	"tabBar": {
