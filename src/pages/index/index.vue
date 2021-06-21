@@ -75,14 +75,6 @@ export default {
         title: '',
         mask: true
       })
-      // this.$axios({
-      //   methods: 'get',
-      //   url: '/user/user.json'
-      // }).then(res => {
-      //   console.log(res)
-      // }).catch(err => {
-      //   console.log(err)
-      // })
       uni.request({
         url: 'http://172.20.10.2:1012/user/user.json',
         method: 'get',
