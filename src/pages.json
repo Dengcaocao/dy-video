@@ -33,6 +33,8 @@
 		{
 			"path": "pages/positionCity/positionCity",
 			"style": {
+				"navigationStyle": "custom",
+				"navigationBarTextStyle": "black",
 				"h5": {
 					"titleNView": {
 						"backgroundColor": "#ffffff",
